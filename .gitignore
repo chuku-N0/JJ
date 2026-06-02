@@ -1,0 +1,12 @@
+# Ignore Piper executable and models
+piper.exe
+*.onnx
+*.onnx.json
+*.dll
+
+# Ignore generated responses and temporary audio
+*.wav
+
+# Ignore your local AI memory storage
+AI_Storage/
+Notes/
