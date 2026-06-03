@@ -679,18 +679,17 @@ def ask_ai(user_prompt, ui):
         return capture_and_see(user_prompt)
 
     if waiting_for_video_choice:
-        # Check if user wants to cancel
-        if any(word in low_prompt for word in ["none", "neither", "cancel", "nothing", "stop"]):
-            waiting_for_video_choice = False
+        if any(word in low_prompt for word in ["none", "no", "neither", "cancel", "nothing", "stop"]):
+            waiting_for_video_choice = false
             current_search_results = []
             return "Understood. I've canceled the selection. What else can I do for you?"
-
-        # Identify the choice
         choice = -1
-        if "first" in low_prompt or "1" in low_prompt or "one" in low_prompt: choice = 0
-        elif "second" in low_prompt or "2" in low_prompt or "two" in low_prompt: choice = 1
-        elif "third" in low_prompt or "3" in low_prompt or "three" in low_prompt: choice = 2
-        
+        if "first" in low_prompt or "1" in low_prompt or "one" in low_prompt:
+            choice = 0
+        elif "second" in low_prompt or "2" in low_prompt or "two" in low_prompt:
+            choice = 1
+        elif "third" in low_prompt or "3" in low_prompt or "three" in low_prompt:
+            choice = 2
         if choice != -1 and choice < len(current_search_results):
             url = current_search_results[choice]['link']
             webbrowser.open(url)
@@ -733,7 +732,7 @@ def ask_ai(user_prompt, ui):
         return read_note_in_chunks(file_path, ui)
 
     system_msg = """
-    You are Jarvis-like AI:
+    You are Jarvis-like AI assistant for a user. You help with tasks, answer questions, and follow commands. and always say what is true, you are:
     - Intelligent
     - Calm and confident
     - Slightly witty
