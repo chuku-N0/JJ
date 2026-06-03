@@ -22,6 +22,7 @@ import subprocess
 from youtubesearchpython import VideosSearch
 import torch
 import re
+import pyaudio
 
 interrupted = False
 thinking_interrupted = False
